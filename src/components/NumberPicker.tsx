@@ -7,16 +7,16 @@ export default function NumberPicker(): JSX.Element {
     useState<number[]>([]);
 
   const handleAddOneToCounter = () => {
-    queueRerenderWithNewCounterValue(counterValueFromCurrentRender + 1);
+    queueRerenderWithNewCounterValue((prevValue) => prevValue + 1);
   };
 
   const handleSubtractOneFromCounter = () => {
-    queueRerenderWithNewCounterValue(counterValueFromCurrentRender - 1);
+    queueRerenderWithNewCounterValue((prevValue) => prevValue - 1);
   };
 
   const handleStoreCurrentCount = () => {
-    queueRerenderWithNewStoredValues([
-      ...storedValuesFromCurrentRender,
+    queueRerenderWithNewStoredValues((prevStoredValues) => [
+      ...prevStoredValues,
       counterValueFromCurrentRender,
     ]);
   };
